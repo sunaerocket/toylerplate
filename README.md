@@ -4,7 +4,7 @@
 
 ![Cover Image](/public/cover.png)
 
-## 설치
+## ⚙️ 설치
 
 > 방법1 또는 2 중에 하나를 골라 `yarn install`
 
@@ -20,7 +20,7 @@ git clone https://github.com/sunaerocket/toylerplate.git
 npx degit sunaerocket/toylerplate 프로젝트이름
 ```
 
-## 명령어
+## 💻 명령어
 
 > 명령어는 설치가 성공하고 난 후에 작동합니다
 
