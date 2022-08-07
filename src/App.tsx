@@ -6,6 +6,7 @@ import { ReactComponent as TypeScriptLogo } from './assets/typescript.svg';
 import { ReactComponent as EslintLogo } from './assets/eslint.svg';
 import { ReactComponent as PrettierLogo } from './assets/prettier.svg';
 import { ReactComponent as StyledComponentsLogo } from './assets/styled-components.svg';
+import StarFall from './components/StarFall';
 
 function App() {
   const BUILDING_BLOCKS = [
@@ -49,6 +50,7 @@ function App() {
           );
         })}
       </BuildingBlocks>
+      <StarFall />
     </Container>
   );
 }
