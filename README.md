@@ -6,7 +6,7 @@
 
 ## ⚙️ 설치
 
-> 방법1 또는 2 중에 하나를 골라 `yarn install`
+> 방법1 또는 2 중에 선택한 다음 `yarn install`
 
 ### 방법1: clone
 
@@ -17,6 +17,9 @@ git clone https://github.com/sunaerocket/toylerplate.git
 ### 방법2: degit
 
 ```bash
+# degit 설치가 안된 경우 전역 설치
+npm i -g degit
+
 npx degit sunaerocket/toylerplate 프로젝트이름
 ```
 

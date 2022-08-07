@@ -6,7 +6,7 @@ import { ReactComponent as TypeScriptLogo } from './assets/typescript.svg';
 import { ReactComponent as EslintLogo } from './assets/eslint.svg';
 import { ReactComponent as PrettierLogo } from './assets/prettier.svg';
 import { ReactComponent as StyledComponentsLogo } from './assets/styled-components.svg';
-import StarFall from './components/StarFall';
+import useStarFall from './hooks/useStarFallBackground';
 
 function App() {
   const BUILDING_BLOCKS = [
@@ -36,6 +36,8 @@ function App() {
     },
   ];
 
+  const StarFall = useStarFall({ fallCount: 50, skyCount: 1000 });
+
   return (
     <Container>
       <Title>TOYLERPLATE</Title>
@@ -50,7 +52,7 @@ function App() {
           );
         })}
       </BuildingBlocks>
-      <StarFall />
+      {StarFall}
     </Container>
   );
 }

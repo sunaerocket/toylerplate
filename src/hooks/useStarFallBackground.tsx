@@ -2,29 +2,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function StarFall() {
-  const FALLING_STAR_COUNT = 20;
-  const BACKGROUND_STAR_COUNT = 300;
-  const coordinates = getCoordinates();
+interface StarFallBackgroundProps {
+  fallCount?: number;
+  skyCount?: number;
+}
+function useStarFallBackground({
+  fallCount = 20,
+  skyCount = 300,
+}: StarFallBackgroundProps) {
+  const StarFall = renderStarFall(fallCount, getCoordinates(skyCount));
+  return StarFall;
+}
 
-  function getCoordinates() {
-    const getRandomCoordinate = () => {
-      const x = getRandomInt(0, 1920);
-      const y = getRandomInt(0, 1080);
-      return `${x}px ${y}px #fff`;
-    };
-
-    const values = [];
-    for (let i = 0; i < BACKGROUND_STAR_COUNT; i++) {
-      values.push(getRandomCoordinate());
-    }
-    return values.join(',');
-  }
-
+function renderStarFall(fallCount: number, coordinates: string) {
   return (
     <Container>
       <Star coordinates={coordinates} />
-      {Array.from({ length: FALLING_STAR_COUNT }).map((_, index) => {
+      {Array.from({ length: fallCount }).map((_, index) => {
         const key = `${index}${new Date().toString()}`;
         const xAxis = getRandomInt(0, 90) + 9;
         const yAxis = getRandomInt(10, 70) + 9;
@@ -42,7 +36,27 @@ function StarFall() {
   );
 }
 
-export default StarFall;
+function getCoordinates(skyCount: number): string {
+  const getRandomCoordinate = () => {
+    const x = getRandomInt(0, window.innerWidth);
+    const y = getRandomInt(0, window.innerHeight);
+    return `${x}px ${y}px #fff`;
+  };
+
+  const values = [];
+  for (let i = 0; i < skyCount; i++) {
+    values.push(getRandomCoordinate());
+  }
+  return values.join(',');
+}
+
+function getRandomInt(min: number, max: number): number {
+  const minInt = Math.ceil(min);
+  const maxInt = Math.floor(max);
+  return Math.floor(Math.random() * (maxInt - minInt)) + minInt;
+}
+
+export default useStarFallBackground;
 
 const Container = styled.div`
   width: 100vw;
@@ -110,9 +124,3 @@ const FallingStar = styled.div<FallingStarProps>`
     }
   }
 `;
-
-function getRandomInt(min: number, max: number): number {
-  const minInt = Math.ceil(min);
-  const maxInt = Math.floor(max);
-  return Math.floor(Math.random() * (maxInt - minInt)) + minInt;
-}
